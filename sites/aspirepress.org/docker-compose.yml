@@ -1,9 +1,10 @@
-# https://github.com/dunglas/frankenphp-wordpress/blob/main/docker-compose.yml
-
 services:
   ap-site-wordpress:
-    build: .
-    restart: always
+    build:
+      context: .
+      # target: dev
+      target: prod
+    restart: unless-stopped
     ports:
       - "${LOCAL_HTTP_PORT:-11180}:80"
       - "${LOCAL_HTTPS_PORT:-11443}:443"
@@ -12,8 +13,8 @@ services:
       WORDPRESS_DB_USER: wp
       WORDPRESS_DB_PASSWORD: password
       WORDPRESS_DB_NAME: wp
-    volumes:
-      - ap-site-wordpress:/var/www/html
+    # volumes:
+    #   - .:/app
     networks:
       traefik: ~
       app-net: ~
@@ -23,7 +24,7 @@ services:
 
   ap-site-db:
     image: mysql:8.4.4
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: wp
       MYSQL_USER: wp

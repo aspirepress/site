@@ -1,37 +1,31 @@
-# https://github.com/dunglas/frankenphp-wordpress/blob/main/Dockerfile
+FROM dunglas/frankenphp:1.4.1-php8.4.3-bookworm AS base
 
-FROM dunglas/frankenphp:latest-php8.2
+COPY --from=composer:2.8.5 /usr/bin/composer /usr/bin/composer
 
-# install the PHP extensions we need (https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
-RUN install-php-extensions \
-    bcmath \
-    exif \
-    gd \
-    intl \
-    mysqli \
-    zip \
-    imagick \
-    opcache
+RUN install-php-extensions bcmath exif gd intl mysqli zip imagick opcache
 
-COPY --from=wordpress /usr/local/etc/php/conf.d/* /usr/local/etc/php/conf.d/
-COPY --from=wordpress /usr/local/bin/docker-entrypoint.sh /usr/local/bin/
-COPY --from=wordpress --chown=root:root /usr/src/wordpress /usr/src/wordpress
+RUN useradd --create-home --shell /bin/bash app \
+    && chown -R app:app /config /data \
+    && apt update \
+    && apt install -y default-mysql-client
 
-WORKDIR /var/www/html
-VOLUME /var/www/html
+COPY docker/ap-site-wordpress/Caddyfile /etc/caddy/Caddyfile
+COPY docker/ap-site-wordpress/php.local.ini /usr/local/etc/php/conf.d/php.local.ini
 
-ARG USER=www-data
-RUN chown -R ${USER}:${USER} /data/caddy && chown -R ${USER}:${USER} /config/caddy
-
-RUN sed -i \
-    -e 's/\[ "$1" = '\''php-fpm'\'' \]/\[\[ "$1" == frankenphp* \]\]/g' \
-    -e 's/php-fpm/frankenphp/g' \
-    /usr/local/bin/docker-entrypoint.sh
-
-RUN sed -i \
-    -e 's#root \* public/#root \* /var/www/html/#g' \
-    /etc/caddy/Caddyfile
-
-USER ${USER}
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+WORKDIR /app
 CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]
+
+################
+FROM base AS dev
+USER app
+
+################
+FROM base AS prod
+
+RUN rm -rf /app
+COPY . /app
+RUN chown -R app:app /app
+
+USER app
+RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader --working-dir=/app
+
