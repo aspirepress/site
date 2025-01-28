@@ -7,7 +7,7 @@ RUN install-php-extensions bcmath exif gd intl mysqli zip imagick opcache
 RUN useradd --create-home --shell /bin/bash app \
     && chown -R app:app /config /data \
     && apt update \
-    && apt install -y default-mysql-client
+    && apt install -y default-mysql-client less
 
 COPY docker/ap-site-wordpress/Caddyfile /etc/caddy/Caddyfile
 COPY docker/ap-site-wordpress/php.local.ini /usr/local/etc/php/conf.d/php.local.ini

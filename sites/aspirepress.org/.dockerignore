@@ -2,3 +2,11 @@ node_modules/
 tmp/
 vendor/
 web/wp/
+
+*.bak
+*.orig
+*.rej
+*.tmp
+
+.env
+.env.*
