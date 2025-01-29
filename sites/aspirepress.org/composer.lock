@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6b071fe3aa8023bdc8440ad9965d74c",
+    "content-hash": "6740e81dffbc108e4f894da811355a37",
     "packages": [
+        {
+            "name": "aspirepress/aspire-update",
+            "version": "0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aspirepress/aspireupdate.git",
+                "reference": "2b15a47aea591e452d94ce8680f65d83338651e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aspirepress/aspireupdate/zipball/2b15a47aea591e452d94ce8680f65d83338651e7",
+                "reference": "2b15a47aea591e452d94ce8680f65d83338651e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "3.10.3",
+                "wp-coding-standards/wpcs": "~3.1.0",
+                "yoast/phpunit-polyfills": "^1.1.0"
+            },
+            "type": "wordpress-plugin",
+            "scripts": {
+                "format": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source"
+                ],
+                "lint": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary, source"
+                ],
+                "test": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@php ./vendor/phpunit/phpunit/phpunit"
+                ]
+            },
+            "license": [
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "AspirePress"
+                }
+            ],
+            "description": "Update plugins and themes for WordPress.",
+            "support": {
+                "source": "https://github.com/aspirepress/aspireupdate/tree/0.5",
+                "issues": "https://github.com/aspirepress/aspireupdate/issues"
+            },
+            "time": "2024-11-05T11:56:01+00:00"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.5.5",
