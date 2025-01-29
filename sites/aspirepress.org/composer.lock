@@ -4,23 +4,119 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6740e81dffbc108e4f894da811355a37",
+    "content-hash": "80934b660a328090b9cd60a70e9edfaf",
     "packages": [
         {
-            "name": "aspirepress/aspire-update",
-            "version": "0.5",
+            "name": "afragen/autoloader",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/aspirepress/aspireupdate.git",
-                "reference": "2b15a47aea591e452d94ce8680f65d83338651e7"
+                "url": "https://github.com/afragen/autoloader.git",
+                "reference": "ab30ab542c48fe3ecd26c3bda28fef544f04b401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aspirepress/aspireupdate/zipball/2b15a47aea591e452d94ce8680f65d83338651e7",
-                "reference": "2b15a47aea591e452d94ce8680f65d83338651e7",
+                "url": "https://api.github.com/repos/afragen/autoloader/zipball/ab30ab542c48fe3ecd26c3bda28fef544f04b401",
+                "reference": "ab30ab542c48fe3ecd26c3bda28fef544f04b401",
                 "shasum": ""
             },
             "require": {
+                "php": ">=5.6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Fragen",
+                    "email": "andy@thefragens.com",
+                    "homepage": "https://thefragens.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PSR-4 style autoloader and classmap loader.",
+            "keywords": [
+                "autoload"
+            ],
+            "support": {
+                "issues": "https://github.com/afragen/autoloader/issues",
+                "source": "https://github.com/afragen/autoloader/tree/3.0.0"
+            },
+            "time": "2024-11-27T02:42:42+00:00"
+        },
+        {
+            "name": "afragen/translations-updater",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/afragen/translations-updater.git",
+                "reference": "c688e85eeef136f9cd7a4719db94ab0fc241601e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/afragen/translations-updater/zipball/c688e85eeef136f9cd7a4719db94ab0fc241601e",
+                "reference": "c688e85eeef136f9cd7a4719db94ab0fc241601e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "wp-coding-standards/wpcs": "^3.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fragen\\Translations_Updater\\": "src/Translations_Updater/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Fragen",
+                    "email": "andy@thefragens.com",
+                    "homepage": "https://thefragens.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This framework provides automatic decoupled languate pack updates from a public repository for your WordPress plugin or theme.",
+            "keywords": [
+                "language pack",
+                "plugin",
+                "theme",
+                "translations",
+                "updater",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/afragen/translations-updater/issues",
+                "source": "https://github.com/afragen/translations-updater"
+            },
+            "time": "2024-11-19T17:24:59+00:00"
+        },
+        {
+            "name": "aspirepress/aspire-update",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aspirepress/aspireupdate.git",
+                "reference": "f2d3005f66305124a53b9f26c5f388115189cbd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aspirepress/aspireupdate/zipball/f2d3005f66305124a53b9f26c5f388115189cbd3",
+                "reference": "f2d3005f66305124a53b9f26c5f388115189cbd3",
+                "shasum": ""
+            },
+            "require": {
+                "afragen/autoloader": "dev-master",
+                "afragen/translations-updater": "^1",
                 "php": ">=7.4.0"
             },
             "require-dev": {
@@ -28,17 +124,22 @@
                 "wp-coding-standards/wpcs": "~3.1.0",
                 "yoast/phpunit-polyfills": "^1.1.0"
             },
+            "default-branch": true,
             "type": "wordpress-plugin",
             "scripts": {
                 "format": [
                     "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source"
                 ],
                 "lint": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary, source"
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source"
                 ],
                 "test": [
                     "Composer\\Config::disableProcessTimeout",
                     "@php ./vendor/phpunit/phpunit/phpunit"
+                ],
+                "test:multisite": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@php ./vendor/phpunit/phpunit/phpunit -c tests/multisite.xml"
                 ]
             },
             "license": [
@@ -51,10 +152,10 @@
             ],
             "description": "Update plugins and themes for WordPress.",
             "support": {
-                "source": "https://github.com/aspirepress/aspireupdate/tree/0.5",
+                "source": "https://github.com/aspirepress/aspireupdate/tree/main",
                 "issues": "https://github.com/aspirepress/aspireupdate/issues"
             },
-            "time": "2024-11-05T11:56:01+00:00"
+            "time": "2025-01-24T19:10:15+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -6033,6 +6134,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "aspirepress/aspire-update": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
