@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fc8ada3f88aa4c34d4c6926e5564f74",
+    "content-hash": "64af0054dc195d4317592e50d1ae9697",
     "packages": [
         {
             "name": "afragen/autoloader",

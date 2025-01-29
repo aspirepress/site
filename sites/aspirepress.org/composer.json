@@ -1,62 +1,76 @@
 {
   "name": "aspirepress/site",
-  "type": "project",
-  "license": "MIT",
   "description": "AspirePress Public Website",
-  "homepage": "https://aspirepress.org",
+  "license": "MIT",
+  "type": "project",
+  "keywords": [
+    "bedrock",
+    "composer",
+    "roots",
+    "wordpress",
+    "wp",
+    "wp-config"
+  ],
   "authors": [
     {
       "name": "Chuck Adams",
       "homepage": "https://github.com/chuckadams"
     }
   ],
-  "keywords": [
-    "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
-  ],
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org",
-      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/aspirepress/AspireUpdate"
-    }
-  ],
+  "homepage": "https://aspirepress.org",
   "require": {
     "php": ">=8.3",
+    "aspirepress/aspire-update": "dev-main",
     "composer/installers": "^2.2",
-    "vlucas/phpdotenv": "^5.5",
     "oscarotero/env": "^2.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
     "roots/wordpress": "6.7.1",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.2.0",
-    "wpackagist-theme/twentytwentyfive": "^1.0",
+    "vlucas/phpdotenv": "^5.5",
     "wp-cli/wp-cli-bundle": "^2.11",
-    "aspirepress/aspire-update": "dev-main"
+    "wpackagist-theme/twentytwentyfive": "^1.0"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest",
-    "laravel/pint": "^1.18"
+    "laravel/pint": "^1.18",
+    "roave/security-advisories": "dev-latest"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/aspirepress/AspireUpdate"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "config": {
-    "optimize-autoloader": true,
-    "preferred-install": "dist",
     "allow-plugins": {
       "composer/installers": true,
       "roots/wordpress-core-installer": true
-    }
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "extra": {
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
     },
     "wordpress-install-dir": "web/wp"
   },
