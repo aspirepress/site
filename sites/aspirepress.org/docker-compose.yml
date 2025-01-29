@@ -4,9 +4,6 @@ services:
       context: .
       target: dev
     restart: unless-stopped
-    ports:
-      - "${LOCAL_HTTP_PORT:-11180}:80"
-      - "${LOCAL_HTTPS_PORT:-11443}:443"
     environment:
       WORDPRESS_DB_HOST: staging-db.aspiredev.org
       WORDPRESS_DB_USER: wp
