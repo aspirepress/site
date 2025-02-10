@@ -1,0 +1,13 @@
+{
+    frankenphp
+    servers {
+        trusted_proxies static private_ranges
+        trusted_proxies_strict
+    }
+}
+
+http:// {
+    root * /app/web
+    php_server
+    log
+}
