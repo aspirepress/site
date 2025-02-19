@@ -30,10 +30,10 @@
     "roots/wp-password-bcrypt": "1.2.0",
     "vlucas/phpdotenv": "^5.6.1",
     "wp-cli/wp-cli-bundle": "^2.11",
-    "wpackagist-theme/twentytwentyfive": "^1.0"
+    "wpackagist-theme/twentytwentyfive": "^1.1"
   },
   "require-dev": {
-    "laravel/pint": "^1.20",
+    "laravel/pint": "^1.21",
     "roave/security-advisories": "dev-latest"
   },
   "repositories": [
