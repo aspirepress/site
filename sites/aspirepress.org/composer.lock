@@ -106,12 +106,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aspirepress/aspireupdate.git",
-                "reference": "5c9489a55297f2ecd6d1329bd87e57e5db4be34f"
+                "reference": "3d47dfa3ba87b16c7fd3599bfe0329b84fdcc238"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aspirepress/aspireupdate/zipball/5c9489a55297f2ecd6d1329bd87e57e5db4be34f",
-                "reference": "5c9489a55297f2ecd6d1329bd87e57e5db4be34f",
+                "url": "https://api.github.com/repos/aspirepress/aspireupdate/zipball/3d47dfa3ba87b16c7fd3599bfe0329b84fdcc238",
+                "reference": "3d47dfa3ba87b16c7fd3599bfe0329b84fdcc238",
                 "shasum": ""
             },
             "require": {
@@ -185,7 +185,7 @@
                 "source": "https://github.com/aspirepress/aspireupdate/tree/main",
                 "issues": "https://github.com/aspirepress/aspireupdate/issues"
             },
-            "time": "2025-02-22T15:39:35+00:00"
+            "time": "2025-02-24T12:49:28+00:00"
         },
         {
             "name": "composer/ca-bundle",
